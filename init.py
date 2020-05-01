@@ -1,14 +1,20 @@
 #coding:utf-8
 
-from __future__ import unicode_literals
-from __future__ import print_function
-from __future__ import division
+from __future__ import division, print_function, unicode_literals
 
 import os
+import sys
 
-pyexts = os.path.dirname(__file__) + "/pyexts"
+if sys.version_info.major == 2:
+    reload(sys)
+    sys.setdefaultencoding('utf-8')
 
-for root, dirs, files in os.walk(pyexts):
-    for f in files:
-        if f.endswith(".py"):
-            exec(open(root + "/" + f, 'rb').read(), globals())
+sys.path.append(os.path.dirname(__file__))
+import pyexts
+
+# pyexts = os.path.dirname(__file__) + "/pyexts"
+
+# for root, dirs, files in os.walk(pyexts):
+# for f in files:
+# if f.endswith(".py"):
+# exec(open(root + "/" + f, 'rb').read(), globals())
